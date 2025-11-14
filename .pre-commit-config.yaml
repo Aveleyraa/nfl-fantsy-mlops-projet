@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: ["--fix"]         # ← arregla auto
+        exclude: "\\.ipynb$"
+      - id: ruff-format
+        exclude: "\\.ipynb$"
+        
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.12.0
+    hooks:
+      - id: mypy
+        args: ["--install-types", "--non-interactive"]
+        additional_dependencies:
+          # Tipos/base
+          - PyYAML>=6.0
+          - types-PyYAML
+          - numpy>=1.26
+          # Tu stack
+          - polars>=1.6
+          - scikit-learn>=1.3
+          - joblib>=1.3
+          - typer>=0.12
