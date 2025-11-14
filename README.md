@@ -22,3 +22,12 @@ y se ejecuta el comando
 
 uv pip insall -e .[dev]
 
+se isntala el pre.commit-config:
+
+pre-commit install
+
+Si se tienen notebooks y se quieren emparejar con un archivo .py se debe de ejetucar el siguinte comando:
+
+jupytext --set-formats ipynb,py:percent notebooks/<nombre del notebook>.ipynb
+
+
