@@ -30,4 +30,5 @@ Si se tienen notebooks y se quieren emparejar con un archivo .py se debe de ejet
 
 jupytext --set-formats ipynb,py:percent notebooks/<nombre del notebook>.ipynb
 
-
+# para actualizar archivo .py
+jupytext --set-formats ipynb,py analysis.ipynb

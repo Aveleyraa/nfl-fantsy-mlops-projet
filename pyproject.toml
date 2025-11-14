@@ -20,6 +20,9 @@ dependencies = [
     "pandas>2.0",
     "jupytext",
     "nflreadpy",
+    "ipykernel>=7.1.0",
+    "matplotlib>=3.10.7",
+    "pyarrow>=22.0.0",
 ]
 
 [project.optional-dependencies]
@@ -66,7 +69,7 @@ strict_optional = true
 plugins = []
 
 [[tool.mypy.overrides]]
-module = ["torch", "torch.*","joblib","sklearn", "sklearn.*"]
+module = ["torch", "torch.*","joblib","sklearn", "sklearn.*", "nflreadpy.*"]
 ignore_missing_imports = true
 
 

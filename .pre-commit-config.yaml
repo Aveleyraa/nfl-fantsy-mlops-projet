@@ -4,22 +4,28 @@ repos:
     hooks:
       - id: ruff
         args: ["--fix"]         # ← arregla auto
-        exclude: "\\.ipynb$"
+        exclude: "\\.(ipynb|py)$"
       - id: ruff-format
-        exclude: "\\.ipynb$"
+        exclude: "\\.(ipynb|py)$"
         
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.12.0
     hooks:
-      - id: mypy
-        args: ["--install-types", "--non-interactive"]
-        additional_dependencies:
-          # Tipos/base
-          - PyYAML>=6.0
-          - types-PyYAML
-          - numpy>=1.26
-          # Tu stack
-          - polars>=1.6
-          - scikit-learn>=1.3
-          - joblib>=1.3
-          - typer>=0.12
+    - id: mypy
+      args: ["--install-types", "--non-interactive"]
+      additional_dependencies:
+        # Tipos/base
+        - PyYAML>=6.0
+        - types-PyYAML
+        - numpy>=1.26
+
+        # Tu stack
+        - polars>=1.6
+        - scikit-learn>=1.3
+        - joblib>=1.3
+        - typer>=0.12
+
+        # Para eliminar errores missing-import
+        - nflreadpy
+        - matplotlib>=3.8
+
