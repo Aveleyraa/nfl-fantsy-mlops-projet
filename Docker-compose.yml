@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Caché persistente entre reinicios
+      - nfl_cache:/app/.nfl_cache
+      - ml_models:/app/ml_models
+    environment:
+      - ENVIRONMENT=local
+      - CACHE_DIR=/app/.nfl_cache
+      - MODELS_DIR=/app/ml_models
+      - CACHE_DURATION=86400
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  nfl_cache:
+  ml_models:
