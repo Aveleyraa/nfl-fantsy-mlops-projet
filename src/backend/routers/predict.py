@@ -143,7 +143,7 @@ def predict_yards(
         ]
         model_version = "heuristic-v0"
         note = (
-            f"Modelo no entrenado aún. Estimación = 97% de {target_col} temporada anterior. "
+            f"Modelo en entrenamiento. Estimación = 97% de {target_col} temporada anterior. "
             f"Guarda tu modelo en ml_models/model_{position.lower()}_yards.pkl para activarlo."
         )
 
