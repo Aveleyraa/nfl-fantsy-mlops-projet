@@ -286,7 +286,7 @@ def view_single(season: int, season_type: str)-> None:
         metrics_available = TREND_METRICS.get(position, TREND_METRICS["QB"])
         metric = st.selectbox("Métrica", metrics_available, key="single_metric")
         fig = season_bar_chart(weekly, metric, selected_name)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
     # Predicción ML
     st.divider()
@@ -393,7 +393,7 @@ def view_compare(season: int, season_type: str)-> None:
         st.markdown('<div class="section-header">Perfil comparativo</div>', unsafe_allow_html=True)
         fig = radar_chart(totals_a, totals_b, name_a, name_b,
                           radar_cfg["keys"], radar_cfg["labels"])
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
     # Chart de tendencia comparado
     st.divider()
@@ -404,7 +404,7 @@ def view_compare(season: int, season_type: str)-> None:
         pa.get("weekly", []), metric, name_a,
         pb.get("weekly", []), name_b,
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 # ── Layout principal ───────────────────────────────────────────────────────────
